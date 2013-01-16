@@ -30,6 +30,14 @@ class CabinetTest < MiniTest::Unit::TestCase
   def test_should_store_bag_successfully
     cabinet = Cabinet.new(1)
     ticket = cabinet.store(Bag.new)
-    assert_instance_of(Ticket, ticket)
+    assert_instance_of Ticket, ticket
+  end
+
+  def test_should_get_bag_by_valid_ticket
+    cabinet = Cabinet.new(1)
+    bag_stored = Bag.new
+    ticket = cabinet.store bag_stored
+    bag_picked = cabinet.pick ticket
+    assert_equal bag_stored, bag_picked
   end
 end
