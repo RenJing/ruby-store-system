@@ -40,4 +40,21 @@ class CabinetTest < MiniTest::Unit::TestCase
     bag_picked = cabinet.pick ticket
     assert_equal bag_stored, bag_picked
   end
+
+  def test_should_not_get_bag_by_invalid_ticket
+    cabinet = Cabinet.new(1)
+    ticket = Ticket.new
+    bag_picked = cabinet.pick ticket
+    assert_equal nil, bag_picked
+  end
+
+  def test_should_not_get_bag_by_used_ticket
+    cabinet = Cabinet.new(1)
+    bag_stored = Bag.new
+    ticket = cabinet.store bag_stored
+    cabinet.pick ticket
+
+    bag_picked = cabinet.pick ticket
+    assert_equal nil, bag_picked
+  end
 end

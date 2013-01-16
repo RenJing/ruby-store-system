@@ -24,6 +24,8 @@ class Cabinet
   end
 
   def pick ticket
-    @ticket_bag_map[ticket]
+    bag = @ticket_bag_map[ticket]
+    @ticket_bag_map[ticket] = nil unless bag.nil?
+    bag
   end
 end
