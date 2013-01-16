@@ -7,7 +7,7 @@ class Cabinet
     @capacity
   end
 
-  def can_store?
+  def storable?
     available_boxes > 0
   end
 end

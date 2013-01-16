@@ -9,6 +9,6 @@ class CabinetTest < MiniTest::Unit::TestCase
 
   def test_should_tell_whether_can_store_bag
     cabinet = Cabinet.new(1)
-    assert cabinet.can_store?
+    assert cabinet.storable?
   end
 end
