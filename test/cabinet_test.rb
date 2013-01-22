@@ -33,6 +33,12 @@ class CabinetTest < MiniTest::Unit::TestCase
     assert_instance_of Ticket, ticket
   end
 
+  def test_should_reduce_available_box_count_after_store_bag_successfully
+    cabinet = Cabinet.new(1)
+    ticket = cabinet.store(Bag.new)
+    assert_equal 0, cabinet.available_boxes
+  end
+
   def test_should_get_bag_by_valid_ticket
     cabinet = Cabinet.new(1)
     bag_stored = Bag.new
