@@ -10,4 +10,9 @@ class Robot
   def storable?
     @cabinets.find {|c| c.storable?} != nil
   end
+
+  def store bag
+    cabinet = @cabinets.find {|c| c.storable?}
+    cabinet.store bag
+  end
 end

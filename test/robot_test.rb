@@ -19,5 +19,12 @@ class RobotTest < MiniTest::Unit::TestCase
     assert robot.storable?
   end
 
-
+  def test_should_store_bag_successfully_in_first_cabinet_with_empty_box
+    cabinet1 = Cabinet.new(1)
+    cabinet2 = Cabinet.new(2)
+    robot = Robot.new(cabinet1, cabinet2)
+    ticket = robot.store Bag.new
+    assert_instance_of Ticket, ticket
+    assert !cabinet1.storable?
+  end
 end
