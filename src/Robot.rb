@@ -13,6 +13,7 @@ class Robot
 
   def store bag
     cabinet = @cabinets.find {|c| c.storable?}
+    cabinet = @cabinets.first if cabinet == nil
     cabinet.store bag
   end
 end

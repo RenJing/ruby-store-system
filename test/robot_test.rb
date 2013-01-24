@@ -27,4 +27,12 @@ class RobotTest < MiniTest::Unit::TestCase
     assert_instance_of Ticket, ticket
     assert !cabinet1.storable?
   end
+
+  def test_should_throw_exception_if_no_empty_cabinet
+    cabinet = Cabinet.new(0)
+    robot = Robot.new(cabinet)
+    assert_raises(CabinetException){
+      robot.store Bag.new
+    }
+  end
 end
